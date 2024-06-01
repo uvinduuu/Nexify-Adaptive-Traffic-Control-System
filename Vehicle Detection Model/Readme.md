@@ -1,31 +1,46 @@
 # Vehicle and Non-Vehicle Classification with Neural Networks and OpenCV
 
-This repository contains code for training a neural network to classify images into vehicles and non-vehicles using a custom dataset. It also includes code for using OpenCV to capture images from a webcam and perform real-time classification.
+This repository contains a machine learning model and an OpenCV script designed to identify vehicles using a webcam. The project leverages a pre-trained Keras model for vehicle detection and OpenCV for capturing video frames from the webcam.
 
-## Steps:
+## Model Overview
 
-### Dataset Preparation:
-- Ensure your dataset is labeled and organized properly with images of vehicles and non-vehicles.
-- Preprocess the data by scaling pixel values to the range [0, 1] if needed.
+The model, `keras_model.h5`, is a Keras-based neural network trained to classify images into two categories:
+1. Vehicles
+2. Non-vehicles
 
-### Model Building:
-- Define a neural network architecture using TensorFlow/Keras.
-- Compile the model with appropriate loss function, optimizer, and metrics.
+The labels for these categories are stored in `labels.txt`: 
+- 0 Vehicles
+- 1 Non-vehicles
 
-### Model Training:
-- Train the model on the prepared dataset.
-- Monitor training progress and evaluate model performance.
-- Save the trained model to a file (`keras_model.h5`).
+## Requirements
 
-### Model Evaluation:
-- Evaluate the trained model on a test dataset to assess its accuracy.
-- Use the saved model for future predictions.
+- Python 3.x
+- Keras
+- TensorFlow
+- OpenCV
 
-## Real-Time Classification with OpenCV:
+You can install the required packages using the following command:
 
-### Script: `openCVpart.py`
-- Use OpenCV to capture images from a webcam.
-- Preprocess the captured images and feed them to the trained model for real-time classification.
+```bash
+pip install keras tensorflow opencv-python
+```
+## Usage
+
+The script openCVpart.py utilizes OpenCV to open the webcam and process the video stream to identify vehicles. Below is a brief explanation of the script:
+
+1. Import Libraries: The necessary libraries are imported, including Keras for loading the model and OpenCV for handling the webcam feed.
+2. Load Model: The pre-trained Keras model is loaded.
+3. Capture Video: OpenCV is used to start capturing video from the default webcam.
+4. Process Frames: Each frame is processed to identify if it contains a vehicle or not.
+5. Display Results: The results are displayed on the video feed in real-time.
+
+## Next Steps
+
+As the next step in this project, we aim to use a separate camera to capture image frames via WiFi and process them for vehicle identification. This involves the following tasks:
+
+- Integrate WiFi Camera: Connect and configure a WiFi-enabled camera to the system.
+- Capture Frames over WiFi: Modify the script to capture frames from the WiFi camera instead of the default webcam.
+- Process and Display: Continue processing the frames using the pre-trained Keras model and display the results in real-time.
 
 ---
 
